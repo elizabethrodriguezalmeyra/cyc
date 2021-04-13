@@ -10,9 +10,11 @@ function App() {
   return (
     <div className="App">
        <NavBar/>
-       <ItemListContainer greeting="Muy Bienvenidos" color="App-header" />  
+       <ItemListContainer greeting="Proximamente..." color="App-header" />  
       <header className="App-header">
-    
+      
+      
+      
       </header>
        
       
