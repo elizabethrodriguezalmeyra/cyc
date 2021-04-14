@@ -1,20 +1,25 @@
 import React from 'react';
-import CartWidget from '../Components/CartWidget';
+import CartWidget from '../CartWidget';
 
 const NavBar = () => {
     return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
-        <a className="navbar-brand" href="#">Menu</a>
+        <a className="navbar-brand" href="#">Coffee & Cheese</a>
         <div className="collapse navbar-collapse" id="navbarScroll">
             <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li className="nav-item">
-                <a class="nav-link" href="#">Dulces</a>
+                <a class="nav-link" href="#">Tortas</a>
                 </li>
                 <li className="nav-item">
-                <a class="nav-link" href="#">Salados</a>
+                <a class="nav-link" href="#">Desayunos</a>
                 </li>
-               
+                <li className="nav-item">
+                <a class="nav-link" href="#">Picadas</a>
+                </li>
+                <li className="nav-item">
+                <a class="nav-link" href="#">Sorpresas</a>
+                </li>
             </ul>
             <ul ul class="navbar-nav ml-auto" >
             <li className="nav-item"  >
