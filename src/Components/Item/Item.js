@@ -1,8 +1,7 @@
 import React, { Component, useState } from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-
-//import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-
+//import imagen1 from '../../Fotos/Desayuno.jpeg';
+//import imagen2 from '../../Fotos/Torta.jpeg';
 
 
 function Item ({id, title, price, pictureUrl, description}) { //solo muestra info y suma al futuro carrito
@@ -15,7 +14,7 @@ function Item ({id, title, price, pictureUrl, description}) { //solo muestra inf
           setNumero(numero- 1);
             }
         };
-       
+    
     return <>
 
                 <div className="card col-sm-4">
