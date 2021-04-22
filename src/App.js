@@ -1,10 +1,7 @@
-import logo from './cc.png';
+
 import './App.css';
 import NavBar from './Components/NavBar/NavBar';
 import ItemListContainer from './Components/Container/ItemListContainer';
-
-//import ButtonFC from './ButtonFc/ButtonFC'
-
 
 function App() {
   return (

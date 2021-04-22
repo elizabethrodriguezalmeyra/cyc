@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, useState } from "react";
 import CartWidget from '../CartWidget';
 
-const NavBar = () => {
+function NavBar() {
     return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
