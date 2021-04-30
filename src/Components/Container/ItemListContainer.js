@@ -84,7 +84,7 @@ import imagen3 from '../../Fotos/Picada.jpeg';
         })*/
         },[])
     
-  console.log("Levanta la categoria" + id);
+  
     return <>
         <h5> {id} </h5>
         <div className="container-fluid">

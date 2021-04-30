@@ -7,17 +7,18 @@ El resultado final es tener una ecommerce funcional que refleje todo lo aprendid
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-En el directorio del proyecto, puede debe ejecutar:
+
+En el directorio del proyecto, se debe ejecutar:
 
 ### `npm start`
 
-Ejecuta la aplicación en el modo de desarrollo \
+para poder levantar la aplicacion en  modo desarrollo. 
 
-Abre el siguiente LINK[http://localhost:3000](http://localhost:3000) para verlo en el navegador.
+Abra el siguiente LINK [http://localhost:3000](http://localhost:3000) para verlo en el navegador.
 
 La página se recargará si realiza modificaciones. \
-También verá errores d en la consola.
+
+
 
 
