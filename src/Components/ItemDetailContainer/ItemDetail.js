@@ -1,8 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState} from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import {useParams} from 'react-router-dom';
 
 
 function ItemDetail ({producto}) {
+    const {id } = useParams();
     const [numero, setNumero] = useState(1);
         const aumentoItem = () => {
           setNumero(numero + 1);
@@ -12,6 +14,7 @@ function ItemDetail ({producto}) {
           setNumero(numero- 1);
             }
         };
+   
     
     return <>
     
@@ -28,6 +31,7 @@ function ItemDetail ({producto}) {
                     <p> <LocalGroceryStoreIcon/> <button onClick="" className="btn btn-secondary"> Agregar al Carrito </button> </p>    
                    
                 </div>
+                <h3> ID: {id} </h3>
             </div>
         </main>
     </div>        

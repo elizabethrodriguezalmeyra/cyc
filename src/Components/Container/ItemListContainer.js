@@ -1,12 +1,15 @@
 import React, {useState, useEffect } from "react";
 import ItemList from "../Item/ItemList";
 import '../Item/Item.css';
+import {useParams} from 'react-router-dom';
 import imagen1 from '../../Fotos/Desayuno.jpeg';
+import imagen2 from '../../Fotos/Torta.jpeg';
+import imagen3 from '../../Fotos/Picada.jpeg';
 
 
   function ItemListContainer () {
-    const [ items, setItems ] = useState([])
-
+    const [ items, setItems ] = useState([]);    
+    const {id} = useParams();
         useEffect(()=>{
         const task = new Promise((resolve,reject)=>{
             const objetos = [
@@ -81,12 +84,11 @@ import imagen1 from '../../Fotos/Desayuno.jpeg';
         })*/
         },[])
     
-  
+  console.log("Levanta la categoria" + id);
     return <>
         <div className="container-fluid">
-            
             <ItemList productos={items} />
-        
+           
         </div>
     </>;
    

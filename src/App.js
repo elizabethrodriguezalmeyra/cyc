@@ -6,28 +6,23 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 
 
+
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <NavBar/>
+      <NavBar />
        <Switch>    
           
-          <Route path="/Tortas/Item/:id">
+          <Route path="/Item/:id">
             <ItemDetailContainer />
           </Route>
-          <Route exact path="/Picadas/Item/:id">
-          <ItemDetailContainer />
-          </Route>
-          <Route path="/Desayuno/Item/:id">
-            <ItemDetailContainer />
-          </Route> 
-          <Route path="/Torta/Item/:id">
-            <ItemDetailContainer />
-          </Route>       
+          <Route exact path="/Categoria/:id">
+           <ItemListContainer />
+          </Route>     
       
           <Route exact patch="/">
-            <ItemListContainer />
+            <ItemListContainer  />
           </Route>
        </Switch>
       <header className="App-header">
