@@ -10,7 +10,7 @@ function ItemList ({productos}) {
         <main id="items" className="col-sm-12 row">
            
             {productos.map((item)=>
-            <Item item = {item}/> )}
+            <Item item = {item} /> )}
            
         </main>
       </div>

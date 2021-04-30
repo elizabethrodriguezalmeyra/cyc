@@ -38,7 +38,7 @@ import imagen3 from '../../Fotos/Picada.jpeg';
                 description: "Picada completa para compartir"
             },
             {
-                id: 'item2',
+                id: 'item4',
                 title: 'Desayuno',
                 price: '$500',
                 pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
@@ -46,7 +46,7 @@ import imagen3 from '../../Fotos/Picada.jpeg';
                 description: "Desayuno con  cafe, medialunas, mermelada, etc"
             },
             {
-                id: 'item1',
+                id: 'item5',
                 title: 'Torta',
                 price: '$50',
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
@@ -54,7 +54,7 @@ import imagen3 from '../../Fotos/Picada.jpeg';
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             },
             {
-                id: 'item1',
+                id: 'item6',
                 title: 'Torta',
                 price: '$50',
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
@@ -86,7 +86,9 @@ import imagen3 from '../../Fotos/Picada.jpeg';
     
   console.log("Levanta la categoria" + id);
     return <>
+        <h5> {id} </h5>
         <div className="container-fluid">
+           
             <ItemList productos={items} />
            
         </div>
