@@ -1,8 +1,10 @@
 import React, {useState, useEffect } from "react";
 import ItemList from "../Item/ItemList";
+import '../Item/Item.css';
+import imagen1 from '../../Fotos/Desayuno.jpeg';
 
 
-  function ItemListContainer ({greeting, color}) {
+  function ItemListContainer () {
     const [ items, setItems ] = useState([])
 
         useEffect(()=>{
@@ -13,6 +15,7 @@ import ItemList from "../Item/ItemList";
                 title: 'Torta',
                 price: '$50',
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
+                category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             },
             {
@@ -20,20 +23,23 @@ import ItemList from "../Item/ItemList";
                 title: 'Desayuno',
                 price: '$500',
                 pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
+                category: "Desayuno",
                 description: "Desayuno con  cafe, medialunas, mermelada, etc"
+            },
+            {
+                id: 'item3',
+                title: 'Picada',
+                price: '$800',
+                pictureUrl: "/static/media/Picada.948f5c12.jpeg",
+                category: "Picadas",
+                description: "Picada completa para compartir"
             },
             {
                 id: 'item2',
                 title: 'Desayuno',
                 price: '$500',
                 pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
-                description: "Desayuno con  cafe, medialunas, mermelada, etc"
-            },
-            {
-                id: 'item2',
-                title: 'Desayuno',
-                price: '$500',
-                pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
+                category: "Desayuno",
                 description: "Desayuno con  cafe, medialunas, mermelada, etc"
             },
             {
@@ -41,6 +47,7 @@ import ItemList from "../Item/ItemList";
                 title: 'Torta',
                 price: '$50',
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
+                category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             },
             {
@@ -48,6 +55,7 @@ import ItemList from "../Item/ItemList";
                 title: 'Torta',
                 price: '$50',
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
+                category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             }
             ]
@@ -73,11 +81,12 @@ import ItemList from "../Item/ItemList";
         })*/
         },[])
     
-   
+  
     return <>
         <div className="container-fluid">
-            <h3 className={color}></h3>
+            
             <ItemList productos={items} />
+        
         </div>
     </>;
    
