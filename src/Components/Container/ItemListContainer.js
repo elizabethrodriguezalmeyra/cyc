@@ -14,49 +14,61 @@ import imagen3 from '../../Fotos/Picada.jpeg';
         const task = new Promise((resolve,reject)=>{
             const objetos = [
             {
+                stock: 15,
+                cant: 1,
                 id: 'item1',
                 title: 'Torta',
-                price: '$50',
+                price: 50,
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
                 category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             },
             {
+                stock: 15,
+                cant: 1,
                 id: 'item2',
                 title: 'Desayuno',
-                price: '$500',
+                price: 500,
                 pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
                 category: "Desayuno",
                 description: "Desayuno con  cafe, medialunas, mermelada, etc"
             },
             {
+                stock: 15,
+                cant: 1,
                 id: 'item3',
                 title: 'Picada',
-                price: '$800',
+                price: 800,
                 pictureUrl: "/static/media/Picada.948f5c12.jpeg",
                 category: "Picadas",
                 description: "Picada completa para compartir"
             },
             {
+                stock: 15,
+                cant: 1,
                 id: 'item4',
                 title: 'Desayuno',
-                price: '$500',
+                price: 500,
                 pictureUrl: "/static/media/Desayuno.c6152fbb.jpeg",
                 category: "Desayuno",
                 description: "Desayuno con  cafe, medialunas, mermelada, etc"
             },
             {
+                stock: 15,
+                cant: 1,
                 id: 'item5',
                 title: 'Torta',
-                price: '$50',
+                price: 50,
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
                 category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"
             },
-            {
+            {   
+                stock: 15,
+                cant: 1,
                 id: 'item6',
                 title: 'Torta',
-                price: '$50',
+                price: 50,
                 pictureUrl: "/static/media/Torta.701fcac0.jpeg",
                 category: "Torta",
                 description: "Torta decorada con rosas, rellena con dulce de leche, chocolate, merengues"

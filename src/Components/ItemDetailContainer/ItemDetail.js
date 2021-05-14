@@ -1,21 +1,30 @@
-import React, { Component, useState} from "react";
+import React, { Component, useState, useEffect, useContext} from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import {useParams} from 'react-router-dom';
+import {cartContext } from "../Context/cartContext";
+import ItemCount from "./ItemCount";
+import {Link, NavLink} from 'react-router-dom';
 
 
 function ItemDetail ({producto}) {
-    const {id } = useParams();
-    const [numero, setNumero] = useState(1);
-        const aumentoItem = () => {
-          setNumero(numero + 1);
-        };
-        const restaItem = () => {
-            if(numero > 1) {
-          setNumero(numero- 1);
-            }
-        };
-   
+    const {carrito, items, totalAmount, addItem } = useContext(cartContext);
     
+    let numero =0 ;
+    let boton = document.getElementById('boton-compra')
+   /* useEffect(()=>{
+        window.addEventListener('click',onAdd);
+        return ()=>{
+          window.removeEventListener(onAdd)
+        }
+      },[])
+    
+    function onAdd(){
+        alert('hax hecoh click');
+    }
+
+
+ //windows.addEventListener('onAdd', onAdd)
+*/
     return <>
     
      <div className="row">
@@ -26,12 +35,10 @@ function ItemDetail ({producto}) {
                     <h3 className="card-title">{producto.title}</h3>
                     <h5 className="card-title">{producto.price}</h5>
                     <p className="card-text">{producto.description}</p>
-                    <button onClick={restaItem} className="btn btn-secondary"> - </button> {numero} <button onClick={aumentoItem} className="btn btn-secondary" >+</button>
-                    <p></p>
-                    <p> <LocalGroceryStoreIcon/> <button onClick="" className="btn btn-secondary"> Agregar al Carrito </button> </p>    
-                   
+                    <ItemCount/>
+                    <p> <LocalGroceryStoreIcon/> <button onClick={()=>addItem(producto, numero)} className="btn btn-secondary">Agregar al carrito  </button> </p>
                 </div>
-                <h3> ID: {id} </h3>
+               
             </div>
         </main>
     </div>        

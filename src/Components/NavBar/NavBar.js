@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import CartWidget from '../CartWidget';
+import CartWidget from '../Cart/CartWidget'
 import {Link, NavLink} from 'react-router-dom';
 
 
@@ -18,13 +18,13 @@ function NavBar() {
                  </li>
                  )
                 }
-           
+
                
             </ul>
             <ul ul class="navbar-nav ml-auto" >
             <li className="nav-item"  >
                 <CartWidget icono="Carrito" nombre="Carrito"/>
-                </li>
+            </li>
             </ul> 
      
     </div>

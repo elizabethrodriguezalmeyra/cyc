@@ -8,10 +8,12 @@ import ItemDetail from "./ItemDetail";
     useEffect(()=>{
     const task = new Promise((resolve,reject)=>{
         const objetos = 
-        {
+        {   
+            stock: 15,
+            cant: 1,
             id: 'item3',
             title: 'Picada',
-            price: '$800',
+            price: 800,
             pictureUrl: "/static/media/Picada.948f5c12.jpeg",
             category: "Picada",
             description: "Picada completa para compartir"
