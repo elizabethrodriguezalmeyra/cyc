@@ -7,8 +7,7 @@ export const cartContext = React.createContext();
 export default function Carrito  ({children}) {
 
     let defaultValue = [];
-    //let items= [];
-    let totalAmount= 0;
+    let size = 0;
     let totalPrice= 0;
 
 
@@ -16,9 +15,11 @@ export default function Carrito  ({children}) {
 
   
   function addCant( item, cant){
+    console.log(cant);
     const result= carrito.find(obj => obj.id === item.id)  // deberia PONERLE la cantidad a ese objeto
     console.log("resultado",result);
     result.cant = cant;
+    //totalAmount+= 1;
     
   }
 
@@ -41,7 +42,7 @@ export default function Carrito  ({children}) {
   }
 
   function total(item, cant){
-     return totalPrice = totalPrice + (item.price * cant);
+    totalPrice = totalPrice + (item.price * cant);
   }
 
   function addItem (item, cant) {   //agrego al carrito un nuevo item
@@ -51,8 +52,9 @@ export default function Carrito  ({children}) {
             addCant(item, cant);
         }
         else {
-            carrito.push(item); //ver estp
-            carrito.find(obj => obj.cant = cant)
+            carrito.push(item); //ver esto!!!!
+            //carrito.find(obj => obj.cant = cant)
+            
             
         }
         total(item,cant);
@@ -61,9 +63,8 @@ export default function Carrito  ({children}) {
   }
 
 
-
  return (
-    <cartContext.Provider value={{carrito,  totalAmount, totalPrice, addItem, removeItem, clear}}>
+    <cartContext.Provider value={{carrito,   totalPrice,  addItem, removeItem, clear}}>
             {children}
     </ cartContext.Provider>
   )

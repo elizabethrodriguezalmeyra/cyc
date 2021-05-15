@@ -1,30 +1,23 @@
 import React, { Component, useState, useEffect, useContext} from "react";
-import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import {useParams} from 'react-router-dom';
 import {cartContext } from "../Context/cartContext";
 import ItemCount from "./ItemCount";
-import {Link, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 function ItemDetail ({producto}) {
-    const {carrito, items, totalAmount, addItem } = useContext(cartContext);
-    
-    let numero =0 ;
-    let boton = document.getElementById('boton-compra')
-   /* useEffect(()=>{
-        window.addEventListener('click',onAdd);
-        return ()=>{
-          window.removeEventListener(onAdd)
-        }
-      },[])
-    
-    function onAdd(){
-        alert('hax hecoh click');
+    const {carrito, addItem } = useContext(cartContext);
+    const [show, setShow] = useState(true)
+
+   
+    const onAdd = (count)=>{
+        console.log("este es el item");
+        addItem(producto, count )
+        setShow(!show)
     }
 
 
- //windows.addEventListener('onAdd', onAdd)
-*/
+    const item = producto;
+  
     return <>
     
      <div className="row">
@@ -35,8 +28,9 @@ function ItemDetail ({producto}) {
                     <h3 className="card-title">{producto.title}</h3>
                     <h5 className="card-title">{producto.price}</h5>
                     <p className="card-text">{producto.description}</p>
-                    <ItemCount/>
-                    <p> <LocalGroceryStoreIcon/> <button onClick={()=>addItem(producto, numero)} className="btn btn-secondary">Agregar al carrito  </button> </p>
+                    {show ? <ItemCount onAdd= {onAdd}/> : <button className="btn btn-secondary"><NavLink to={`/Carrito`}  >TerminarCompra </NavLink> </button>  }
+                    
+                   
                 </div>
                
             </div>

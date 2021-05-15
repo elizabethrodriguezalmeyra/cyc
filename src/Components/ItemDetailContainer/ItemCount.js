@@ -1,15 +1,16 @@
-import React, { Component, useState, useContext} from "react";
+import React, { Component, useState, useContext, useEffect} from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import {useParams} from 'react-router-dom';
+import {useParams, useEffects} from 'react-router-dom';
 import {cartContext } from "../Context/cartContext";
+//import { Button } from "@material-ui/core";
+import Button from '../Button/Button'
 
-
-export default function ItemCount (producto) {
+export default function ItemCount ({onAdd}) {
 
     const {carrito, items, totalAmount, addItem } = useContext(cartContext);
+    
    
   
-      
      const [numero, setNumero] = useState(1);
         const aumentoItem = () => {
           setNumero(numero + 1);
@@ -22,8 +23,8 @@ export default function ItemCount (producto) {
    
     return <>
         <button onClick={restaItem} className="btn btn-secondary"> - </button> {numero} <button onClick={aumentoItem} className="btn btn-secondary" >+</button>       
-        
-
+        <p> <LocalGroceryStoreIcon/> <button id="botonClick" onClick={()=>onAdd(numero)} className="btn btn-secondary"> Agregar al carrito </button> </p>
+       
     </>;
    
    }
