@@ -7,25 +7,16 @@ export const cartContext = React.createContext();
 export default function Carrito  ({children}) {
 
     let defaultValue = [];
-    let size = 0;
     let totalPrice= 0;
-
-
-  const [carrito, setCarrito] = useState(defaultValue);
-
-  
-  function addCant( item, cant){
-    console.log(cant);
-    const result= carrito.find(obj => obj.id === item.id)  // deberia PONERLE la cantidad a ese objeto
-    console.log("resultado",result);
-    result.cant = cant;
-    //totalAmount+= 1;
     
-  }
 
-
+     const [carrito, setCarrito] = useState(defaultValue)   
+     
+     let mostrar = carrito.length;
+     let cantItems = 0; 
+    
   function isInCart(id){
-     console.log("entro is in cart");
+    // console.log("entro is in cart");
         return carrito.find(obj => obj.id === id)
   }
 
@@ -37,34 +28,35 @@ export default function Carrito  ({children}) {
   }
 
   function clear(){
-    console.log("entro aca");    //limpio el carrito poniendole el arreglo vacio inicial
+    //console.log("entro aca");    //limpio el carrito poniendole el arreglo vacio inicial
      setCarrito(defaultValue);
   }
 
-  function total(item, cant){
-    totalPrice = totalPrice + (item.price * cant);
-  }
+ 
 
   function addItem (item, cant) {   //agrego al carrito un nuevo item
    
-        if(isInCart(item.id)){   //primero verifico si ya esta agregado
-           
-            addCant(item, cant);
+        if (!(isInCart(item.id))){   //primero verifico si ya esta agregad
+          carrito.push(item); //ver esto!!!!
         }
-        else {
-            carrito.push(item); //ver esto!!!!
-            //carrito.find(obj => obj.cant = cant)
-            
-            
-        }
-        total(item,cant);
-        //console.log(totalPrice)
+      
+        let id= item.id
+        carrito.find(id => item.cant = cant)           
         setCarrito(carrito);
+       
   }
+
+ function verItems(){
+   carrito.forEach(item => cantItems += item.cant)
+   console.log(cantItems)
+  return (cantItems/2);
+
+
+ }
 
 
  return (
-    <cartContext.Provider value={{carrito,   totalPrice,  addItem, removeItem, clear}}>
+    <cartContext.Provider value={{carrito,   totalPrice, mostrar, cantItems, addItem, removeItem, clear, verItems }}>
             {children}
     </ cartContext.Provider>
   )
