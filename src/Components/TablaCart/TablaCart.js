@@ -4,7 +4,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 
 export default function TablaCart () {
-    const {carrito, items, totalAmount, totalPrice, addItem, removeItem, clear} = useContext(cartContext)
+    const {carrito, items, totalAmount, totalPrice, addItem, removeItem, clear, precioTotal} = useContext(cartContext)
     let total = 0
 
     return <>
@@ -14,7 +14,7 @@ export default function TablaCart () {
           
                   
                   <th align="center">Cantidad</th>
-                  <th align="center">Categoria</th>
+                  <th align="center">Imagen</th>
                   <th align="center">Descripcion</th>
                   <th align="center">Precio</th>
                   <th align="center">Eliminar</th>
@@ -25,18 +25,18 @@ export default function TablaCart () {
         {carrito.map((row) => 
         <tr class="table-active">
                     <td align="center"> {row.cant} </td>
-                    <td align="center"> {row.category} </td>
+                    <td align="center"> <img src={row.pictureUrl}  width="80" height="80"></img> </td>
                     <td align="center"> {row.description} </td>
                     <td align="center"> {row.price} </td>
                     <td align="center"><button onClick={()=>removeItem(row.id)} className="btn btn-secondary"> <DeleteIcon color="secondary"/></button></td>
-                    {total= total + (row.price*row.cant)}
+                  
                     </tr>   
                 )}
        
         
         <tr>
           <th scope="row"></th>
-          <td colspan="2" class="table-active">Total: {total}</td> 
+          <td colspan="2" class="table-active">Total: {precioTotal()}</td> 
           <td></td>
         </tr>
       </tbody>

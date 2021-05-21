@@ -1,14 +1,13 @@
 import React, { Component, useState, useContext } from "react";
 import {Link, NavLink} from 'react-router-dom';
 import {cartContext } from "../Context/cartContext";
-
 import TablaCart from '../TablaCart/TablaCart'
 
 
 
 export default  function Cart () { 
 
-  const {carrito, items, totalAmount, totalPrice, addItem, removeItem, clear} = useContext(cartContext)
+  const {carrito,  mostrar, cantItem, addItem, removeItem, clear, precioTotal} = useContext(cartContext)
  
   
     return <>

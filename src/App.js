@@ -6,13 +6,15 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import  Carrito from './Components/Context/cartContext';
 import Cart from './Components/Cart/Cart';
-
+import CategoryContainer from './Components/Container/CategoryContainer';
+//import imagen from './Fotos/Desayuno Mixto.jpeg'
 
 
 function App() {
   return (
     <Carrito>
      <BrowserRouter>
+    
     <div className="App">
       <NavBar />
        <Switch>
@@ -23,7 +25,7 @@ function App() {
             <ItemDetailContainer />
           </Route>
           <Route exact path="/Categoria/:id">
-           <ItemListContainer />
+           <CategoryContainer />
           </Route>     
           <Route path="/Carrito">
             <Cart/>

@@ -8,31 +8,38 @@ import imagen3 from '../../Fotos/Picada.jpeg';
 import {getFirestore} from '../../firebase'
 
 
-  function ItemListContainer () {
+export default function CategoryContainer () {
+
     const [ items, setItems ] = useState([]); 
     const [ loading, setLoading ] = useState(true);   
-   
+    
+    const {id} = useParams();
+    //console.log(id)
+
         useEffect(()=>{
-
             const db= getFirestore();
-
             const itemCollection = db.collection('items');
-            itemCollection.get().then((querySnapshot) => {
+            const itemCategoria = itemCollection.where('categoryId', '==', id)
+
+            itemCategoria.get().then((querySnapshot) => {
                 if(querySnapshot.size === 0){
-                    console.log('Items no existe');
+                    setLoading(false);
+                   return console.log('No existen items para esa categoria');
                 }
+                else{
                 const resultados = querySnapshot.docs.map(doc =>{
                     return {
                         id: doc.id,
                         ...doc.data(),
                     }
                 })
+                console.log(resultados);
                 setItems(resultados);
+                setLoading(true);
+            }
             }).catch((error)=>{
                 console.log("Error searching items", error);
-            }).finally(()=> {
-                setLoading(false);
-            });
+            })
     
 
         },[]);
@@ -43,12 +50,12 @@ import {getFirestore} from '../../firebase'
     return <>
         
         <div className="container-fluid">
+            
+           {loading ?  <ItemList productos={items} /> : <h1> No hay items en esta categoria, vuelva mas tarde</h1> }
            
-            <ItemList productos={items} />
            
         </div>
     </>;
    
    }
-   export default ItemListContainer;
-   
+      

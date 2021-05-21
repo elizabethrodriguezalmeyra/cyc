@@ -17,7 +17,7 @@ function Item ({item}) { //solo muestra info y suma al futuro carrito
           setNumero(numero- 1);
             }
         };
-      
+      //console.log(item)
     return <>
              
               
@@ -25,12 +25,12 @@ function Item ({item}) { //solo muestra info y suma al futuro carrito
                     <div className="card-body">
                         <img  src={item.pictureUrl} className="img-rounded" width="304" height="304"/>
                         <h3 className="card-title">{item.title}</h3>
-                        <h5 className="card-title">{item.price}</h5>
+                        <h5 className="card-title">${item.price}</h5>
                         <NavLink to={`/Item/${item.id}`} className="btn btn-secondary"> Detalles </NavLink>
                         <p></p>
                         <button onClick={restaItem} className="btn btn-secondary"> - </button> {numero} <button onClick={aumentoItem} className="btn btn-secondary" >+</button>
                         <p></p>
-                        <p>{item.id}</p>
+                        
                         <p> <LocalGroceryStoreIcon/> <button onClick={()=>addItem(item, numero)} className="btn btn-secondary">Agregar al carrito  </button> </p>
                       
                     </div>

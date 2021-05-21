@@ -1,38 +1,37 @@
 import React, {useState, useEffect } from "react";
+import { useParams } from "react-router";
 import ItemDetail from "./ItemDetail";
+import {getFirestore} from '../../firebase'
 
 
   function ItemDetailContainer () {
-    const [ items, setItems ] = useState([])
-
+    const [ items, setItem ] = useState([]);
+    const [ loading, setLoading ] = useState(true);   
+    const {id} = useParams();
+   
     useEffect(()=>{
-    const task = new Promise((resolve,reject)=>{
-        const objetos = 
-        {   
-            stock: 15,
-            cant: 1,
-            id: 'item3',
-            title: 'Picada',
-            price: 800,
-            pictureUrl: "/static/media/Picada.948f5c12.jpeg",
-            category: "Picada",
-            description: "Picada completa para compartir"
-        }
-        
-        setTimeout(()=>{
-        resolve(objetos)
-        },2000)
-    })
+      const db= getFirestore();
 
-    task.then((res)=>{
-    setItems(res)
-
-    },(rej)=>{
-      console.error("Ocurrio un error")
-    })
-    },[])
+      const itemCollection = db.collection('items');
+      const item = itemCollection.doc(id)
+      item.get().then((querySnapshot) => {
+          if(!querySnapshot.exists){
+              console.log('Items no existe');
+              return;
+          }
+          
+          setItem({id: querySnapshot.id, ...querySnapshot.data()});
+      }).catch((error)=>{
+          console.log("Error searching items", error);
+      }).finally(()=> {
+          setLoading(false);
+      });
 
 
+  },[]);
+
+
+   
     return <>
        <div className="container-fluid">
             <div className="container-fluid">

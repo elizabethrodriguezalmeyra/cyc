@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
@@ -6,20 +6,21 @@ import {Link} from 'react-router-dom';
 import {cartContext} from "../Context/cartContext";
 
 function CartWidget ({icono, nombre}) {
-  const {carrito, items, totalAmount, totalPrice, cantItems, addItem, removeItem, clear, verItems} = useContext(cartContext)
- 
-let numero= 0;
+  const {carrito,  mostrar, cantItem, addItem, removeItem, clear, precioTotal} = useContext(cartContext)
 
-   function ver(){
-     numero= verItems();
-   }
+  const [cant, setCant] = useState(0)
  
+  useEffect(()=>{
+       setCant(()=>cantItem());
+       console.log(cant)
+}, 0);
+
 
     return <>
         <div>
-      {ver()}
+       
         <IconButton color="inherit">
-          <Badge badgeContent={numero} color="secondary">
+          <Badge badgeContent={cantItem()} color="secondary">
           <LocalGroceryStoreIcon />
           <Link to={`/Carrito`} className= "nav-link"></Link>
           </Badge>

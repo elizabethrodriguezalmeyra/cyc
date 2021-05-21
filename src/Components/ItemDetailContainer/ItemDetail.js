@@ -26,7 +26,7 @@ function ItemDetail ({producto}) {
                 <div className="card-body">
                     <img  src={producto.pictureUrl} className="img-rounded" width="304" height="304"/>
                     <h3 className="card-title">{producto.title}</h3>
-                    <h5 className="card-title">{producto.price}</h5>
+                    <h5 className="card-title">${producto.price}</h5>
                     <p className="card-text">{producto.description}</p>
                     {show ? <ItemCount onAdd= {onAdd}/> : <button className="btn btn-secondary"><NavLink to={`/Carrito`}  >TerminarCompra </NavLink> </button>  }
                     

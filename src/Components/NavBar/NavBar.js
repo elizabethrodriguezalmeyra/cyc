@@ -1,10 +1,38 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect} from "react";
 import CartWidget from '../Cart/CartWidget'
 import {Link, NavLink} from 'react-router-dom';
+import {getFirestore} from '../../firebase';
 
 
-function NavBar() {
-    const arrCat = ['Tortas','Desayunos', 'Picadas', 'Sorpresas'];
+export default function NavBar() {
+   
+    const [ categorias, setCategorias] = useState([]); 
+    const [ loading, setLoading ] = useState(true);   
+
+ useEffect(()=>{
+        const db= getFirestore();
+
+        const categoriasCollection = db.collection('categorias');
+        categoriasCollection.get()
+        .then((querySnapshot) => {
+            const resultados = querySnapshot.docs.map(doc =>{
+                return {
+                    id: doc.id,
+                    ...doc.data()
+
+                }
+            })
+            setCategorias(resultados);
+        }).catch((error)=>{
+            console.log("Error searching items", error);
+       // }).finally(()=> {
+         //   setLoading(false);
+     });
+
+
+    },[]);
+
+
    
     return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,9 +40,9 @@ function NavBar() {
         <Link to={'/Home'}className="navbar-brand" href="#">Coffee & Cheese</Link>
         <div className="collapse navbar-collapse" id="navbarScroll">
             <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                { arrCat.map((cat) =>
-                 <li key={cat.toString()} className="nav-item">
-                    <Link to={`/Categoria/${cat}`} className= "nav-link">{cat} </Link>
+                { categorias.map((cat) =>
+                 <li key={cat.key} className="nav-item">
+                    <Link to={`/Categoria/${cat.id}`} className= "nav-link">{cat.nombre} </Link>
                  </li>
                  )
                 }
@@ -30,8 +58,8 @@ function NavBar() {
     </div>
     </div>
     </nav>
-    </>;
+    </>
    }
-   export default NavBar;
+ 
    
    
