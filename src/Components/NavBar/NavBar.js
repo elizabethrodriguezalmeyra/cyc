@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect} from "react";
 import CartWidget from '../Cart/CartWidget'
-import {Link, NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {getFirestore} from '../../firebase';
 
 

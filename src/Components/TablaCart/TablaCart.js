@@ -1,11 +1,18 @@
 import React, { Component, useState, useContext, useEffect} from "react";
 import {cartContext } from "../Context/cartContext";
 import DeleteIcon from '@material-ui/icons/Delete';
+import {Link} from 'react-router-dom';
+
 
 
 export default function TablaCart () {
     const {carrito, items, totalAmount, totalPrice, addItem, removeItem, clear, precioTotal} = useContext(cartContext)
-    let total = 0
+    const [terminar, setTerminar ] =  useState(false);
+    //const [user, setUser ] =  useState({nombre: 'Elizabeth Rodriguez', mail: 'laliroal@gmail.com', phone:'2396469025'});
+    const [orden, setOrden] = useState([]);
+    
+
+
 
     return <>
        <table class="table">
@@ -15,7 +22,7 @@ export default function TablaCart () {
                   
                   <th align="center">Cantidad</th>
                   <th align="center">Imagen</th>
-                  <th align="center">Descripcion</th>
+                  <th align="center">Titulo</th>
                   <th align="center">Precio</th>
                   <th align="center">Eliminar</th>
             </tr>    
@@ -26,7 +33,7 @@ export default function TablaCart () {
         <tr class="table-active">
                     <td align="center"> {row.cant} </td>
                     <td align="center"> <img src={row.pictureUrl}  width="80" height="80"></img> </td>
-                    <td align="center"> {row.description} </td>
+                    <td align="center"> {row.title} </td>
                     <td align="center"> {row.price} </td>
                     <td align="center"><button onClick={()=>removeItem(row.id)} className="btn btn-secondary"> <DeleteIcon color="secondary"/></button></td>
                   
@@ -43,7 +50,9 @@ export default function TablaCart () {
     </table>
         
           <button onClick={()=>clear()}>Vaciar</button>
-      
+          <button ><Link to={`/Checkout`} className= "nav-link">Terminar Compra </Link>  </button>
+
+         
     </>;
    
    }
