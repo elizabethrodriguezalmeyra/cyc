@@ -40,8 +40,6 @@ export default  function FormularioUser () {
   }
 }
   function CrearOrden(){
-   //email2== document.getElementById('email');
-   
     if(name !== "" && phone !== "" && email !== "" && email2){
       setCrear(true)   
       }

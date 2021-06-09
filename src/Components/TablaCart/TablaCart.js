@@ -8,13 +8,9 @@ import {Link} from 'react-router-dom';
 export default function TablaCart () {
     const {carrito, items, totalAmount, totalPrice, addItem, removeItem, clear, precioTotal} = useContext(cartContext)
     const [terminar, setTerminar ] =  useState(false);
-    //const [user, setUser ] =  useState({nombre: 'Elizabeth Rodriguez', mail: 'laliroal@gmail.com', phone:'2396469025'});
     const [orden, setOrden] = useState([]);
-    
-
-
-
-    return <>
+   
+   return <>
        <table class="table">
           <thead>
             <tr>

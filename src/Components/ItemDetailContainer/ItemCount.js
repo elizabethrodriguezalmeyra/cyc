@@ -2,8 +2,7 @@ import React, { Component, useState, useContext, useEffect} from "react";
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import {useParams, useEffects} from 'react-router-dom';
 import {cartContext } from "../Context/cartContext";
-//import { Button } from "@material-ui/core";
-import Button from '../Button/Button'
+
 
 export default function ItemCount ({onAdd}) {
 

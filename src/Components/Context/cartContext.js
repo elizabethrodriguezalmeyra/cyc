@@ -8,27 +8,24 @@ export default function Carrito  ({children}) {
 
     let defaultValue = [];
   
-    
-
-     const [carrito, setCarrito] = useState(defaultValue)   
+    const [carrito, setCarrito] = useState(defaultValue)   
      
      let mostrar = carrito.length;
       
     
   function isInCart(id){
-    // console.log("entro is in cart");
+  
         return carrito.find(obj => obj.id === id)
   }
 
-  function removeItem(id){  //le paso el id directamente
+  function removeItem(id){ 
     const filtredData = carrito.filter(item => item.id !== id)
     setCarrito(filtredData)
-   // items = filtredData;
     
   }
 
   function clear(){
-    //console.log("entro aca");    //limpio el carrito poniendole el arreglo vacio inicial
+    //limpio el carrito poniendole el arreglo vacio inicial
      setCarrito(defaultValue);
   }
 
@@ -48,12 +45,12 @@ export default function Carrito  ({children}) {
         }
        
        
-        //setCarrito(carrito)
+      
   }
 
  function precioTotal(){
    const precioTotal=carrito.reduce((a,b)=>(a+(b.price*b.cant)),0)
-   console.log("precio total es", precioTotal)
+  
    return precioTotal;
    
   }

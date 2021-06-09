@@ -12,7 +12,7 @@ function CartWidget ({icono, nombre}) {
  
   useEffect(()=>{
        setCant(()=>cantItem());
-       console.log(cant)
+       
 }, 0);
 
 

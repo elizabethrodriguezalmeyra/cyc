@@ -6,7 +6,7 @@ import {cartContext} from "../Context/cartContext";
 
 
 function Item ({item}) { //solo muestra info y suma al futuro carrito
-        //const addItem = useContext(cartContext);
+        
         const {carrito, items, totalAmount, addItem } = useContext(cartContext);
         const [numero, setNumero] = useState(1);
         const aumentoItem = () => {
@@ -17,7 +17,7 @@ function Item ({item}) { //solo muestra info y suma al futuro carrito
           setNumero(numero- 1);
             }
         };
-      //console.log(item)
+     
     return <>
              
               

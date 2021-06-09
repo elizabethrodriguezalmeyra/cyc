@@ -10,7 +10,7 @@ function ItemDetail ({producto}) {
 
    
     const onAdd = (count)=>{
-        console.log("este es el item");
+        
         addItem(producto, count )
         setShow(!show)
     }

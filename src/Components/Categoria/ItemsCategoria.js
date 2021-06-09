@@ -11,7 +11,7 @@ const [ loading, setLoading ] = useState(true);
 
 
 useEffect(()=>{  
-            console.log(id)
+           
             const db= getFirestore();  
             const itemCollection = db.collection('items');
             const itemCategoria = itemCollection.where('categoryId', '==', id.id)
@@ -28,7 +28,6 @@ useEffect(()=>{
                         ...doc.data(),
                     }
                 })
-                console.log(resultados);
                 setItems(resultados);
                 setLoading(true);
             }

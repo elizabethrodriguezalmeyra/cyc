@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from "react";
-import ItemList from "../Item/ItemList";
 import '../Item/Item.css';
 import {useParams} from 'react-router-dom';
 import imagen1 from '../../Fotos/Desayuno.jpeg';
@@ -14,11 +13,11 @@ export default function CategoryContainer () {
     const [categoria, setCategoria] = useState();
     
     const {nombre} = useParams();
-    //console.log(id)
+  
 
         useEffect(()=>{
             const db= getFirestore();  
-            console.log(nombre)
+           
             const categoriaCollection = db.collection('categorias')
             const categoriaId = categoriaCollection.where('nombre' , '==', nombre)
             categoriaId.get().then((query)=>{
@@ -34,7 +33,7 @@ export default function CategoryContainer () {
            
         
 
-   console.log(categoria)
+ 
     return <>
         
         <div className="container-fluid">

@@ -1,5 +1,4 @@
 import React, { Component, useState, useContext, useEffect, useParams } from "react";
-import {Link, NavLink} from 'react-router-dom';
 import {cartContext } from "../Context/cartContext";
 import * as firebase from 'firebase/app'
 import {getFirestore} from '../../firebase'
@@ -8,7 +7,7 @@ import {getFirestore} from '../../firebase'
 
 export default  function Orden (nombre) { 
     
-  //console.log(nombre)
+
   const {carrito,  precioTotal} = useContext(cartContext)
  
   const[ordenNueva, setOrden] = useState()

@@ -25,8 +25,7 @@ export default function NavBar() {
             setCategorias(resultados);
         }).catch((error)=>{
             console.log("Error searching items", error);
-       // }).finally(()=> {
-         //   setLoading(false);
+     
      });
 
 
