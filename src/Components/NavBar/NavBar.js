@@ -42,7 +42,7 @@ export default function NavBar() {
             <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                 { categorias.map((cat) =>
                  <li key={cat.key} className="nav-item">
-                    <Link to={`/Categoria/${cat.id}`} className= "nav-link">{cat.nombre} </Link>
+                    <Link to={`/Categoria/${cat.nombre}`} className= "nav-link">{cat.nombre} </Link>
                  </li>
                  )
                 }

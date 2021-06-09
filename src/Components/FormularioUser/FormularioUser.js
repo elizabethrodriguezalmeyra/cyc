@@ -1,6 +1,6 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import {cartContext } from "../Context/cartContext";
-
+import './style.css';
 import {NavLink} from 'react-router-dom';
 import Orden from "../Orden/Orden";
   
@@ -13,7 +13,8 @@ export default  function FormularioUser () {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
-
+    let email2= true
+    
 
   function onNameChange(evt) {
     setName(evt.target.value);
@@ -24,20 +25,31 @@ export default  function FormularioUser () {
   function onEmailChange(evt) {
     setEmail( evt.target.value);
   }
-
-  
-  
+  function onEmail2Change(evt){
+   if(email != evt.target.value){
+    
+    document.getElementById("error").classList.add("mostrar");
+    document.getElementById("ok").classList.remove("mostrar");
+   
+    email2= false
+  }
+  else {
+    document.getElementById("error").classList.remove("mostrar");
+    document.getElementById("ok").classList.add("ocultar");
+    email2=true
+  }
+}
   function CrearOrden(){
-    if(name !== "" && phone !== "" && email !== ""){
-    setCrear(true)   
-    }
+   //email2== document.getElementById('email');
+   
+    if(name !== "" && phone !== "" && email !== "" && email2){
+      setCrear(true)   
+      }
+  
 
   }
- 
-  
 
-
-    return <>   
+  return <>   
  
  <table class="table">
           <thead>
@@ -70,6 +82,16 @@ export default  function FormularioUser () {
 
 <fieldset>
 <legend align="center">Datos personales</legend>
+<div id="msg"></div>
+ 
+
+<div id="error" class="alert alert-danger ocultar" role="alert">
+    Los Mails no coinciden, vuelve a intentar !
+</div>
+<div id="ok" class="alert alert-success ocultar" role="alert">
+    Los Mails coinciden !
+</div>
+
 
 <div class="form-group row" align="center">
 
@@ -86,6 +108,12 @@ export default  function FormularioUser () {
 </div>
 </div>
 <div class="form-group row" align="center">
+<label for="inputEmail" class="col-sm-2 col-form-label">RepetirMail</label>
+<div class="col-sm-6">
+  <input type="email" class="form-control" id="email" onChange={evt => onEmail2Change(evt)} placeholder="Repetir Email" required></input>
+</div>
+</div>
+<div class="form-group row" align="center">
 <label for="inputtelefono" class="col-sm-2 col-form-label">Telefono</label>
 <div class="col-sm-6">
   <input type="number" class="form-control" onChange={evt => onPhoneChange(evt)} placeholder="Telefono" required></input>
@@ -95,7 +123,7 @@ export default  function FormularioUser () {
 
 </fieldset>
  
-<button onClick={()=>CrearOrden()}> CrearOrden  </button>
+<button onClick={()=>CrearOrden()}> Crear Orden  </button>
 
 {crear?  <Orden nombre={name} telefono={phone} email={email}/> : <h1>Deberá ingresar todos los datos para crear la orden</h1>}
    

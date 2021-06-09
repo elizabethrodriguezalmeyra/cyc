@@ -6,52 +6,40 @@ import imagen1 from '../../Fotos/Desayuno.jpeg';
 import imagen2 from '../../Fotos/Torta.jpeg';
 import imagen3 from '../../Fotos/Picada.jpeg';
 import {getFirestore} from '../../firebase'
-
+import ItemsCategoria from '../Categoria/ItemsCategoria'
 
 export default function CategoryContainer () {
 
-    const [ items, setItems ] = useState([]); 
-    const [ loading, setLoading ] = useState(true);   
     
-    const {id} = useParams();
+    const [categoria, setCategoria] = useState();
+    
+    const {nombre} = useParams();
     //console.log(id)
 
         useEffect(()=>{
-            const db= getFirestore();
-            const itemCollection = db.collection('items');
-            const itemCategoria = itemCollection.where('categoryId', '==', id)
-
-            itemCategoria.get().then((querySnapshot) => {
-                if(querySnapshot.size === 0){
-                    setLoading(false);
-                   return console.log('No existen items para esa categoria');
+            const db= getFirestore();  
+            console.log(nombre)
+            const categoriaCollection = db.collection('categorias')
+            const categoriaId = categoriaCollection.where('nombre' , '==', nombre)
+            categoriaId.get().then((query)=>{
+                if(query.size === 0) {
+                    return console.log('No existe esa categoria');
                 }
                 else{
-                const resultados = querySnapshot.docs.map(doc =>{
-                    return {
-                        id: doc.id,
-                        ...doc.data(),
-                    }
+                    return setCategoria(query.docs[0].id);
+                }}).catch((error)=>{
+                    console.log("Error searching categoria", error);
                 })
-                console.log(resultados);
-                setItems(resultados);
-                setLoading(true);
-            }
-            }).catch((error)=>{
-                console.log("Error searching items", error);
-            })
-    
-
-        },[]);
-
-
+        }, '')
+           
         
-  
+
+   console.log(categoria)
     return <>
         
         <div className="container-fluid">
             
-           {loading ?  <ItemList productos={items} /> : <h1> No hay items en esta categoria, vuelva mas tarde</h1> }
+           {categoria=== undefined ?  <h1> Cargando </h1>  :   <ItemsCategoria id={categoria} />}
            
            
         </div>

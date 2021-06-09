@@ -50,7 +50,7 @@ export default function TablaCart () {
     </table>
         
           <button onClick={()=>clear()}>Vaciar</button>
-          <button ><Link to={`/Checkout`} className= "nav-link">Terminar Compra </Link>  </button>
+          <button ><Link to={`/Checkout`}>Terminar Compra </Link>  </button>
 
          
     </>;
